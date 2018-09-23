@@ -19,35 +19,37 @@
 
 using namespace std;
 
-int *poptwo(stack<string> s){
-    int *a = new int[2];
-    a[0] = stoi(s.top());
-    s.pop();
-    a[1]= stoi(s.top());
-    s.pop();
-    return a;
-}
-
 int main() {
-    stack<string> s;
+    stack<int> s;
     string inp;
     while(cin >> inp) {
         int *a;
         string d;
         if(inp == "+") {
-            a = poptwo(s);
-            d = to_string(a[0] + a[1]);
+            int t = s.top();
+            s.pop();
+            int u = s.top();
+            s.pop();
+            s.push(t+u);
+            continue;
         } else if(inp == "*") {
-            a = poptwo(s);
-            d = to_string(a[0] * a[1]);
+            int t = s.top();
+            s.pop();
+            int u = s.top();
+            s.pop();
+            s.push(t*u);
+            continue;
         } else if(inp == "-") {
-            a = poptwo(s);
-            d = to_string(a[1] - a[0]);
+            int t = s.top();
+            s.pop();
+            int u = s.top();
+            s.pop();
+            s.push(u - t);
+            continue;
         } else {
-            d = inp;
+            s.push(stoi(inp));
         }
-        s.push(d);
     }
-    cout << stoi(s.top()) << endl;
+    cout << s.top() << endl;
     return 0;
 }

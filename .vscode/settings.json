@@ -20,6 +20,8 @@
         "functional": "cpp",
         "iostream": "cpp",
         "complex": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "typeinfo": "cpp",
+        "numeric": "cpp"
     }
 }

@@ -18,26 +18,25 @@
 #include <functional>
 
 using namespace std;
-void trace(int *a, int n)
-{
-    for (int k = 0; k < n; k++)
-    {
-        if (k != 0)
-            cout << ' ';
-        cout << a[k];
-    }
-    cout << '\n';
-}
+
 int main() {
-    int n;
+    int n, m;
     cin >> n;
-    int *a = new int[n];
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
+    int *p = new int[n];
+    for(int i=0; i<n; i++) {
+        cin >> p[i];
     }
-    int c = 0;
-    
-    trace(a, n);
+    cin >> m;
+    //int *q = new int[m];
+    int q, c=0;
+    for(int i=0; i<m; i++) {
+        cin >> q;
+        for(int j=0; j<n; j++) {
+            if(q == p[j]) {
+                c++;
+                break;
+            }
+        }
+    }
     cout << c << endl;
 }
