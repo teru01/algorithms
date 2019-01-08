@@ -22,36 +22,42 @@ using namespace std;
 int left(int i) { return i*2; }
 int right(int i){ return i*2+1;}
 int parent(int i){return i/2;}
-
-void maxHeapify(int* A, int i, int n) {
+int H;
+/**
+ * O(logH)
+ */
+void maxHeapify(int* A, int i) {
     int l = left(i);
     int r = right(i);
-    int largest = i;
-    if(l <= n && A[l] > A[i]) largest = l;
-    if(r <= n && A[r] > A[largest]) largest = r;
-    if(largest != i) {
-        int t = A[i];
-        A[i] = A[largest];
-        A[largest] = t;
-        maxHeapify(A, largest, n);
+    int maxind = i;
+    if(l <= H && A[l] > A[maxind]) {
+        maxind = l;
+    }
+    if(r <= H && A[r] > A[maxind]) {
+        maxind = r;
+    }
+
+    if(maxind != i) {
+        swap(A[i], A[maxind]);
+        maxHeapify(A, maxind);
+    }
+}
+
+void buildMaxHeap(int* A) {
+    for(int i = H/2; i >= 1; i--) {
+        maxHeapify(A, i);
     }
 }
 
 int main() {
-    int n;
-    cin >> n;
-    int *A = new int[n+1];
-    //1オリジン
-    for (int i = 1; i <= n; i++)
-    {
+    cin >> H;
+    int *A = new int[H+1];
+    for(int i=1; i<=H; i++) {
         cin >> A[i];
     }
-    for(int i=n/2; i>=1; i--) {
-        maxHeapify(A, i, n);
-    }
-    for(int i=1; i<=n; i++) {
+    buildMaxHeap(A);
+    for(int i=1; i<=H; i++) {
         cout << " " << A[i];
     }
-    cout << endl;
-    delete[] A; 
+    cout << "\n";
 }

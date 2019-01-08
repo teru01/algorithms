@@ -1,0 +1,12 @@
+insert A3
+insert B3
+insert C4
+insert D2
+insert E4
+insert F4
+insert G4
+insert H4
+insert I6
+insert J4
+insert K1
+insert L4

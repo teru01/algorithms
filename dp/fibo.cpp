@@ -19,27 +19,15 @@
 #include <climits>
 
 using namespace std;
-int T[251];
-void compbintree() {
-
+int T[100] = {0};
+int fibo(int n) {
+    if(T[n] != 0) return T[n];
+    T[n] = fibo(n-1) + fibo(n-2);
+    return T[n];
 }
 int main() {
+    T[0] = T[1] = 1;
     int n;
     cin >> n;
-    for(int i=0; i<n; i++) {
-        cin >> T[i];
-    }
-    for(int i=1; i<=n; i++) {
-        cout << T[i-1] << ", ";
-        if(i/2-1 >= 0) {
-            cout << T[i/2-1] << ", ";
-        }
-        if(2*i-1 <= n-1) {
-            cout << T[2*i-1] << ", ";
-        }
-        if(2*i <= n-1) {
-            cout << T[2*i] << ", ";
-        }
-        cout << "\n";
-    }
+    cout << fibo(n) << endl;
 }

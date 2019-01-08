@@ -22,6 +22,7 @@
         "complex": "cpp",
         "algorithm": "cpp",
         "typeinfo": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "__bit_reference": "cpp"
     }
 }
